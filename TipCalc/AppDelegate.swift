@@ -15,7 +15,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    
+    let userDefaults = UserDefaults.standard
+    let isFirstLoad = userDefaults.bool(forKey: "is_first_load")
+    
+    userDefaults.integer(forKey: "_poorService")
+    userDefaults.integer(forKey: "_averageService")
+    userDefaults.integer(forKey: "_excellentService")
+    userDefaults.integer(forKey: "_persons")
+    userDefaults.string(forKey: "colorTheme")
+    userDefaults.integer(forKey: "segmentIndex")
+    userDefaults.bool(forKey: "roundUp")
+    userDefaults.double(forKey: "bill")
+    userDefaults.string(forKey: "billfield")
+    userDefaults.double(forKey: "total")
+    userDefaults.double(forKey: "perPerson")
+    userDefaults.integer(forKey: "tipPct")
+    userDefaults.double(forKey: "tip")
+    userDefaults.string(forKey: "savedAmt")
+    userDefaults.double(forKey: "savedTip")
+    userDefaults.integer(forKey: "savedTipPct")
+    userDefaults.double(forKey: "savedTotal")
+    userDefaults.integer(forKey: "savedPersons")
+    userDefaults.double(forKey: "savedPerPerson")
+  
+    
+    if(!isFirstLoad) {
+      userDefaults.set(10, forKey: "_poorService")
+      userDefaults.set(15, forKey: "_averageService")
+      userDefaults.set(20, forKey: "_excellentService")
+      userDefaults.set(2, forKey: "_persons")
+      userDefaults.set("light", forKey: "colorTheme")
+      userDefaults.set(0, forKey: "segmentIndex")
+      userDefaults.set(false, forKey: "roundUp")
+      userDefaults.set(0.00, forKey: "bill")
+      userDefaults.set(0.00, forKey: "total")
+      userDefaults.set(0.00, forKey: "perPerson")
+      userDefaults.set(0.00, forKey: "tip")
+      userDefaults.set(15, forKey: "tipPct") 
+      userDefaults.set(true, forKey: "is_first_load")
+    }
+    
+   
+    Style.colorTheme = userDefaults.string(forKey: "colorTheme")
+    
+    userDefaults.synchronize()
+    Style.loadTheme(name: Style.colorTheme!)
+    
+    
+    
     return true
   }
 

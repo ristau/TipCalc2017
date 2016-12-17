@@ -12,6 +12,8 @@
 		E5C742AC1DF649FD0037D353 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C742AA1DF649FD0037D353 /* Main.storyboard */; };
 		E5C742AE1DF649FD0037D353 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C742AD1DF649FD0037D353 /* Assets.xcassets */; };
 		E5C742B11DF649FD0037D353 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C742AF1DF649FD0037D353 /* LaunchScreen.storyboard */; };
+		E5C742B91DF664850037D353 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C742B81DF664850037D353 /* SettingsViewController.swift */; };
+		E5C742BD1DF8C1EA0037D353 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C742BC1DF8C1EA0037D353 /* Style.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		E5C742AD1DF649FD0037D353 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5C742B01DF649FD0037D353 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5C742B21DF649FD0037D353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5C742B81DF664850037D353 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E5C742BC1DF8C1EA0037D353 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +59,9 @@
 			isa = PBXGroup;
 			children = (
 				E5C742A61DF649FD0037D353 /* AppDelegate.swift */,
+				E5C742BC1DF8C1EA0037D353 /* Style.swift */,
 				E5C742A81DF649FD0037D353 /* ViewController.swift */,
+				E5C742B81DF664850037D353 /* SettingsViewController.swift */,
 				E5C742AA1DF649FD0037D353 /* Main.storyboard */,
 				E5C742AD1DF649FD0037D353 /* Assets.xcassets */,
 				E5C742AF1DF649FD0037D353 /* LaunchScreen.storyboard */,
@@ -138,6 +144,8 @@
 			files = (
 				E5C742A91DF649FD0037D353 /* ViewController.swift in Sources */,
 				E5C742A71DF649FD0037D353 /* AppDelegate.swift in Sources */,
+				E5C742B91DF664850037D353 /* SettingsViewController.swift in Sources */,
+				E5C742BD1DF8C1EA0037D353 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +305,7 @@
 				E5C742B71DF649FD0037D353 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
