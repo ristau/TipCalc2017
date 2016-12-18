@@ -55,15 +55,8 @@ class ViewController: UIViewController {
     nav?.titleTextAttributes = [NSForegroundColorAttributeName: Style.textColor]
     
     billField.keyboardAppearance = UIKeyboardAppearance.dark
-
-    let userDefaults = UserDefaults.standard
     
-    let now = Date()
-    let then = userDefaults.object(forKey: "savedTime") as? Date
-    
-    if(then != nil && now.timeIntervalSince(then!)<600) {
-      billField.text = userDefaults.string(forKey: "savedAmt")
-    }
+    loadSavedFields()
     
   }
   
@@ -77,18 +70,8 @@ class ViewController: UIViewController {
     excellentService = userDefaults.integer(forKey: "_excellentService")
     averageService = userDefaults.integer(forKey: "_averageService")
     poorService = userDefaults.integer(forKey: "_poorService")
-    
-      billField.text = userDefaults.string(forKey: "billfield")
-      
-      tip = userDefaults.double(forKey: "tip")
-      tipPercentage = userDefaults.integer(forKey: "tipPct")
-      total = userDefaults.double(forKey: "total")
-
-      persons = userDefaults.integer(forKey: "_persons")
-      perPerson = userDefaults.double(forKey: "perPerson")
-    
     roundTip = userDefaults.bool(forKey: "roundUp")
-    
+
     calcTip()
     
     Style.colorTheme = userDefaults.string(forKey: "colorTheme")
@@ -107,13 +90,12 @@ class ViewController: UIViewController {
     UserDefaults.standard.set(Date(), forKey: "savedTime")
     UserDefaults.standard.set(billField.text, forKey: "savedAmt")
 
-    UserDefaults.standard.set(billField.text, forKey: "billfield")
-     UserDefaults.standard.set(tip, forKey: "tip")
-     UserDefaults.standard.set(total, forKey: "total")
-     UserDefaults.standard.set(perPerson, forKey: "perPerson")
-     UserDefaults.standard.set(persons, forKey: "_persons")
-     UserDefaults.standard.set(tipPercentage, forKey: "tipPct")
-
+   // UserDefaults.standard.set(billField.text, forKey: "billfield")
+     UserDefaults.standard.set(tip, forKey: "savedTip")
+     UserDefaults.standard.set(total, forKey: "savedTotal")
+     UserDefaults.standard.set(perPerson, forKey: "savedPerPerson")
+     UserDefaults.standard.set(persons, forKey: "savedPersons")
+     UserDefaults.standard.set(tipPercentage, forKey: "savedTipPct")
     
     UserDefaults.standard.synchronize()
     
@@ -197,6 +179,14 @@ class ViewController: UIViewController {
       }
         updateValueLabels()
     }
+    
+    else if ((bill == nil) || (bill == 0)) {
+      tip = 0.0
+      bill = 0.0
+      total = 0.0
+      perPerson = 0.0
+    }
+      updateValueLabels()
   }
 
   
@@ -255,5 +245,49 @@ class ViewController: UIViewController {
   @IBAction func onTap(_ sender: AnyObject) {
     view.endEditing(true)
   }
+  
+  
+  func loadSavedFields() {
+    
+    let userDefaults = UserDefaults.standard
+    
+    let now = Date()
+    let then = userDefaults.object(forKey: "savedTime") as? Date
+    
+    if(then != nil && now.timeIntervalSince(then!)<600) {
+      billField.text = userDefaults.string(forKey: "savedAmt")
+  
+      tip = userDefaults.double(forKey: "savedTip")
+      tipPercentage = userDefaults.integer(forKey: "savedTipPct")
+      total = userDefaults.double(forKey: "savedTotal")
+      
+      persons = userDefaults.integer(forKey: "savedPersons")
+      perPerson = userDefaults.double(forKey: "savedPerPerson")
+      
+    } else {
+      loadDefaultFields()
+    }
+    
+    
+  }
+  
+  func loadDefaultFields() {
+    
+    let userDefaults = UserDefaults.standard
+
+    billField.text = userDefaults.string(forKey: "billfield")
+    
+    tip = userDefaults.double(forKey: "tip")
+    tipPercentage = userDefaults.integer(forKey: "tipPct")
+    total = userDefaults.double(forKey: "total")
+    
+    persons = userDefaults.integer(forKey: "_persons")
+    perPerson = userDefaults.double(forKey: "perPerson")
+    
+  }
+  
+  
+  
+  
 }
 
